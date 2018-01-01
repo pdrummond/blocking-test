@@ -1,12 +1,12 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
-app.get('/one', (req, res) => res.send('Boom! /one'))
-app.get('/two', (req, res) => {
-    for(i = 0; i<999999999; i++) {
-        console.log("Loop " + i);
-    }
-    res.send('Boom! /two')
+app.get('/hello', (req, res) => res.send('Hello World'));
+app.get('/block', (req, res) => {
+  for (i = 0; i < 500000; i++) {
+    console.log('Loop ' + i);
+  }
+  res.send(`Looped ${i} times before responding`);
 });
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(3000, () => console.log('Listening on port 3000!'));
